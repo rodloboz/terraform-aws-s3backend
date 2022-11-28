@@ -54,20 +54,12 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "s3_bucket_server_
       kms_master_key_id = aws_kms_key.kms_key.arn
     }
   }
-
-  tags = {
-    ResourceGroup = local.namespace
-  }
 }
 
 resource "aws_s3_bucket_versioning" "s3_bucket_versioning" {
   bucket = aws_s3_bucket.s3_bucket.id
   versioning_configuration {
     status = "Enabled"
-  }
-
-  tags = {
-    ResourceGroup = local.namespace
   }
 }
 
