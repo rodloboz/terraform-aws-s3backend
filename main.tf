@@ -1,6 +1,6 @@
 data "aws_region" "current" {}
 
-resource "random_string" {
+resource "random_string" "rand" {
   length  = 24
   special = false
   upper   = false
@@ -67,7 +67,7 @@ resource "aws_s3_bucket_public_access_block" "s3_bucket" {
   restrict_public_buckets = true
 }
 
-resource "aws_dynamodb_table" {
+resource "aws_dynamodb_table" "dynamodb_table" {
   name         = "${local.namespace}-state-lock"
   hash_key     = "LockID"
   billing_mode = "PAY_PER_REQUEST"
